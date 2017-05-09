@@ -1,6 +1,6 @@
 """
 
-Author: Jessica A Bryant (with substantial help from John E.)
+Author: Jessica A Bryant (with substantial help from John E)
 Affiliation: UH and MIT
 Aim: A simple snakemake workflow to process MiSeq paired-end SSU amplicon data.
 
@@ -13,21 +13,16 @@ Config file: 1) The workflow assumes all your samples came from one MiSeq run, s
 organizational aspirations: http://snakemake.readthedocs.io/en/latest/snakefiles/deployment.html#integrated-package-management                 
 
 Date: March 22, 2017
-    To run:
-     1. Activate a python3 environment. (for more info: https://conda.io/docs/py2or3.html)
-        ex: source activate py35
-     2. Edit the config.yml with the correct mapping file path and
-         the directory containing the raw MiSeq data.
-     3. place this Snakefile, updated config.yml and alternative.yml in the same directory. 
-     Then from this directory type: snakemake --use-conda
+Run: snakemake --use-conda 
 
 """
 
 configfile: "config.yaml"
-SAMPLES, = glob_wildcards(config['raw_data_directory']+"/{reads}_R1_001.fastq")
+SAMPLES, = glob_wildcards(config['raw_data_directory']+"{reads}_R1_001.fastq")
 
 for reads in SAMPLES:
-  print("Sample[s] " + reads + " will be processed")
+  print("Sample " + reads + " will be processed")
+
 
 #declare the first target file as output
 rule all: 
@@ -44,8 +39,8 @@ rule all:
 
 rule get_sequencing_stats:
     input:
-       fwd="folder/{reads}_R1_001.fastq",
-       rev="folder/{reads}_R2_001.fastq"
+       fwd=config['raw_data_directory'] + "{reads}_R1_001.fastq",
+       rev=config['raw_data_directory'] + "{reads}_R2_001.fastq"
     output:
         "{reads}.stats"
     conda:
@@ -56,8 +51,8 @@ rule get_sequencing_stats:
 
 rule trimming:
    input: 
-       fwd="folder/{reads}_R1_001.fastq",
-       rev="folder/{reads}_R2_001.fastq"
+       fwd=config['raw_data_directory'] + "{reads}_R1_001.fastq",
+       rev=config['raw_data_directory'] + "{reads}_R2_001.fastq"
    output:
        fwd="trimmed/{reads}_paired.fastq",
        single="trimmed/{reads}_unpaired.fastq",
@@ -103,8 +98,8 @@ rule barcodes_to_keep:
 
 rule screen_index_fastq:
     input:
-        fastq="folder/{reads}_I1_001.fastq",
-        readlist="trimmed/{reads}_pear_reads_to_keep.txt"
+        fastq=config['raw_data_directory'] + "{reads}_I1_001.fastq",
+        readlist= "trimmed/{reads}_pear_reads_to_keep.txt"
     output:
         "trimmed/{reads}_screened_index.fastq"
     message: """--- cleaning up barcodes"""
