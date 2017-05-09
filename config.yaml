@@ -1,0 +1,5 @@
+raw_data_directory:
+    #"/slipstream/data/incoming/miseq/170213_M02545_0021_000000000-AYGPY/Data/Intensities/BaseCalls/CSHLIVD00-20a-S07C001-0005_S1_L001_R1_001.fastq /slipstream/data/incoming/miseq/170213_M02545_0021_000000000-AYGPY/Data/Intensities/BaseCalls/"
+    folder/
+mapping_file:
+    "/mnt/lysine/jbryant/dipole/dipole_mapping.tsv"
