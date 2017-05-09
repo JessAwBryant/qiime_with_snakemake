@@ -6,6 +6,7 @@ Affiliation: UH and MIT
 Aim: A simple snakemake workflow to process MiSeq paired-end SSU amplicon data.
 
 Required Files:
+
 	config.yaml: 
 		This file tells snakemake where the data files are. Two files and corresponding file paths are required:
 		
