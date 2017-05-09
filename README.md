@@ -8,6 +8,7 @@ Aim: A simple snakemake workflow to process MiSeq paired-end SSU amplicon data.
 Required Files:
 	config.yaml: 
 		This file tells snakemake where the data files are. Two files and corresponding file paths are required:
+		
 			1) A single directory containing all raw paired-end MiSeq files (forward & reverse reads plus index files).
              
             2) A Qiime mapping file.
@@ -19,9 +20,12 @@ Required Files:
                  
 Date: March 22, 2017
     To run:
+    
      1. Activate a python3 environment. (for more info: https://conda.io/docs/py2or3.html)
         ex: source activate py35
+        
      2. Edit the config.yml with the correct mapping file path and
          the directory containing the raw MiSeq data.
+         
      3. place this Snakefile, updated config.yml and alternative.yml in the same directory. 
      Then from this directory type: snakemake --use-conda
