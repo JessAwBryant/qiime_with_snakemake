@@ -11,8 +11,7 @@ Required Files:
 		This file tells snakemake where the data files are. Two files and corresponding file paths are required:
 		
 		1) A single directory containing all raw paired-end MiSeq files (forward & reverse reads plus index files).
-             
-                2) A Qiime mapping file.
+		2) A Qiime mapping file.
                    Formatting information Available at: http://qiime.org/documentation/file_formats.html
 
     alternative.yaml:
