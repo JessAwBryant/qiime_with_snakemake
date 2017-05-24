@@ -3,7 +3,7 @@
 Author: Jessica A Bryant (with substantial help from John Eppley)
 Affiliation: UH and MIT
 
-Aim: A simple snakemake workflow to process MiSeq paired-end SSU amplicon data.
+Aim: A simple snakemake workflow to process MiSeq paired-end SSU amplicon data using QIIME.
 
 Required Files:
 
